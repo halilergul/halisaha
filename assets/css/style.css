@@ -1,0 +1,117 @@
+body {
+    background-color: #121518;
+    font-family: "San Francisco";
+    font-weight: 200;
+    -webkit-overflow-scrolling: touch;
+}
+
+#image {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.container {
+    z-index: 2;
+    position: relative;
+}
+
+#logo {
+    margin-top: 150px;
+    text-align: center;
+}
+
+#logo img {
+    max-width: 50%;
+    display: block;
+    margin: 10px auto;
+}
+
+#logo span {
+    color: #fff;
+    font-size: 36px;
+}
+
+#checkbox {
+    text-align: center;
+    display: block;
+    position: relative;
+}
+
+.btn-login {
+    background-color: #007f39;
+    border: none;
+    color: #fff;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 400;
+    outline: none;
+}
+
+.form-control {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #8e8f8e;
+    border-radius: 0;
+    height: 50px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.checkbox {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#logo-main {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#logo-main img {
+    max-width: 40%;
+    display: block;
+    margin: 10px auto;
+}
+
+#user img {
+    max-width: 40%;
+    display: block;
+    margin: 25px auto;
+    margin-bottom: 10px;
+}
+
+#user h1 {
+    display: block;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+#user span {
+    display: block;
+    color: #007f39;
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+}
+
+#content img{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
