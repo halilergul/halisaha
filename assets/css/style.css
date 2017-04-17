@@ -110,14 +110,14 @@ body {
     font-weight: 400;
 }
 
-
 #content {
     position: fixed;
     width: 100%;
     bottom: 0;
     left: 0;
 }
-#content img{
+
+#content img {
     width: 100%;
     display: block;
 }
@@ -128,27 +128,33 @@ body {
     top: 0;
     left: 0;
 }
+
 #content .text .title {
     margin: 15px 0 20px 0;
     color: #fff;
     font-size: 24px;
     font-weight: 300;
 }
+
 #content .text .title span {
     border-bottom: 1px solid #fff;
 }
+
 #content .text p {
     font-weight: 300;
-    margin:0;
+    margin: 0;
 }
+
 #content .text .day {
     font-size: 100px;
     line-height: 85px;
 }
+
 #content .text .month {
     font-size: 50px;
     line-height: 55px;
 }
+
 #content .text .year {
     font-size: 25px;
     line-height: 35px;
@@ -160,6 +166,7 @@ body {
     right: 0;
     width: 220px;
 }
+
 .status button {
     font-size: 20px;
     text-align: right;
@@ -168,6 +175,7 @@ body {
     border: none;
     padding: 20px;
 }
+
 .status select {
     background: transparent;
     outline: none;
@@ -185,6 +193,7 @@ body {
     -moz-appearance: none;
     appearance: none;
 }
+
 .status-text {
     position: absolute;
     bottom: 0;

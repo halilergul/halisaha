@@ -1,14 +1,14 @@
 <div ng-controller="LoginController">
-<div id="image">
-            <img src="assets/images/login_bg.jpg" width="100%">
+    <div id="image">
+        <img src="assets/images/login_bg.jpg" width="100%">
+    </div>
+    <div class="container">
+        <div id="logo">
+            <img src="assets/images/logo.png" alt="">
+            <span>Halı Saha</span>
         </div>
-        <div class="container">
-            <div id="logo">
-                <img src="assets/images/logo.png" alt="">
-                <span>Halı Saha</span>
-            </div>
-            <div id="login-form" style="margin-top: 80px;">
-                <form action="main">
+        <div id="login-form" style="margin-top: 80px;">
+            <form action="" onsubmit="return false;" method="post">
                 <div class="form-group">
                     <input type="username" class="form-control" id="username" placeholder="Kullanıcı Adı">
                 </div>
@@ -17,9 +17,9 @@
                     <div class="checkbox col-xs-12">
                         <input type="checkbox">Beni Hatırla</label>
                     </div>
-                    <button type="submit" class="btn-login col-xs-12">Giriş Yap</button>
+                    <button type="submit" ng-click="Login()" class="btn-login col-xs-12">Giriş Yap</button>
                 </div>
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 </div>
