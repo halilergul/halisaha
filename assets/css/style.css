@@ -3,6 +3,7 @@ body {
     font-family: "San Francisco";
     font-weight: 200;
     -webkit-overflow-scrolling: touch;
+    color: #fff;
 }
 
 #image {
@@ -87,7 +88,7 @@ body {
 }
 
 #user img {
-    max-width: 40%;
+    max-width: 35%;
     display: block;
     margin: 25px auto;
     margin-bottom: 10px;
@@ -96,7 +97,7 @@ body {
 #user h1 {
     display: block;
     color: #fff;
-    font-size: 36px;
+    font-size: 32px;
     text-align: center;
 }
 
@@ -109,9 +110,86 @@ body {
     font-weight: 400;
 }
 
+
+#content {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
 #content img{
     width: 100%;
-    position: fixed;
+    display: block;
+}
+
+#content .text {
+    position: absolute;
+    z-index: 2;
+    top: 0;
     left: 0;
+}
+#content .text .title {
+    margin: 15px 0 20px 0;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+}
+#content .text .title span {
+    border-bottom: 1px solid #fff;
+}
+#content .text p {
+    font-weight: 300;
+    margin:0;
+}
+#content .text .day {
+    font-size: 100px;
+    line-height: 85px;
+}
+#content .text .month {
+    font-size: 50px;
+    line-height: 55px;
+}
+#content .text .year {
+    font-size: 25px;
+    line-height: 35px;
+}
+
+.status {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    width: 220px;
+}
+.status button {
+    font-size: 20px;
+    text-align: right;
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 20px;
+}
+.status select {
+    background: transparent;
+    outline: none;
+    border: none;
+    position: absolute;
     bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    font-size: 24px;
+    height: 100%;
+    width: 100%;
+    text-indent: -9999px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.status-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 15px;
+    color: #42fd4a;
+    font-size: 30px;
 }

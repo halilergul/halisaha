@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,35 +7,13 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/fonts/font.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/angular-carousel.css" />
-    <script src="assets/js/angular.js"></script>
-    <script src="assets/js/angular-touch.js"></script>
-    <script src="assets/js/service.js"></script>
-    <script src="assets/js/iscroll.js"></script>
-    <script src="assets/js/angular-carousel.min.js"></script>
 
     <body>
-        <div id="image">
-            <img src="assets/images/login_bg.jpg" width="100%">
-        </div>
-        <div class="container">
-            <div id="logo">
-                <img src="assets/images/logo.png" alt="">
-                <span>Halı Saha</span>
-            </div>
-            <div id="login-form" style="margin-top: 120px;">
-                <div class="form-group">
-                    <input type="username" class="form-control" id="username" placeholder="Kullanıcı Adı">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="pwd" placeholder="Parola">
-                    <div class="checkbox col-xs-12">
-                        <input type="checkbox">Beni Hatırla</label>
-                    </div>
-                    <button type="submit" class="btn-login col-xs-12">Giriş Yap</button>
-                </div>
-            </div>
-        </div>
+        <ui-view></ui-view>
     </body>
+
+    <script src="assets/js/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <script src="src/config.js"></script>
 
 </html>
