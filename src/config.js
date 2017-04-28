@@ -1,5 +1,7 @@
 var app = angular.module('myApp', ['ngRoute']);
 
+var ApiUrl = "http://demo.caretta.net/halisahaapi/carettapi/"
+
 app.config(['$routeProvider', function($routeProvider, $scope) {
     $routeProvider
         .when('/login', {
@@ -14,7 +16,7 @@ app.config(['$routeProvider', function($routeProvider, $scope) {
         }).otherwise({
             redirectTo: '/login'
         });
-       
+
 }]);
 
 
@@ -30,9 +32,33 @@ app.controller('JoinController', function($scope, $location) {
     }
 });
 
-app.controller('LoginController', function($scope, $location) {
+app.controller('LoginController', function($scope, $location, $http) {
     $scope.Login = function() {
-        $location.path("/main");
+
+        var LoginObj = {
+            Username: $scope.username,
+            Password: $scope.password
+        };
+
+        console.log(LoginObj);
+
+        $http({
+            method: 'POST',
+            url: ApiUrl + 'Login/',
+            data: LoginObj
+        }).then(function successCallback(response) {
+            console.log(response);
+            
+            $location.path("/main");
+
+        }, function errorCallback(response) {
+            console.log("hata");
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+
+
+
     }
 });
 
