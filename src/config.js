@@ -41,24 +41,20 @@ app.controller('LoginController', function($scope, $location, $http) {
         };
 
         console.log(LoginObj);
-
         $http({
             method: 'POST',
-            url: ApiUrl + 'Login/',
+            url: ApiUrl + 'Login',
             data: LoginObj
         }).then(function successCallback(response) {
             console.log(response);
-            
+
             $location.path("/main");
 
         }, function errorCallback(response) {
-            console.log("hata");
+            alert("Kullanıcı adı veya şifre hatalı");
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
-
-
-
     }
 });
 
