@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute','ngStorage']);
 
 var ApiUrl = "http://demo.caretta.net/halisahaapi/carettapi/"
 
@@ -20,10 +20,18 @@ app.config(['$routeProvider', function($routeProvider, $scope) {
 }]);
 
 
-app.controller('MainController', function($scope, $location) {
+app.controller('MainController', function($scope, $location,$localStorage) {
+     console.log($localStorage.login);
+     $scope.firstname = $localStorage.login.FirstName +" "+ $localStorage.login.LastName;
     $scope.Main = function() {
         $location.path("/join");
     }
+
+    $scope.LogOut = function() {
+        $location.path("/login");
+        $localStorage.$reset();
+    }
+
 });
 
 app.controller('JoinController', function($scope, $location) {
@@ -32,7 +40,7 @@ app.controller('JoinController', function($scope, $location) {
     }
 });
 
-app.controller('LoginController', function($scope, $location, $http) {
+app.controller('LoginController', function($scope, $location, $http,$localStorage) {
     $scope.Login = function() {
 
         var LoginObj = {
@@ -40,14 +48,12 @@ app.controller('LoginController', function($scope, $location, $http) {
             Password: $scope.password
         };
 
-        console.log(LoginObj);
         $http({
             method: 'POST',
             url: ApiUrl + 'Login',
             data: LoginObj
         }).then(function successCallback(response) {
-            console.log(response);
-
+            $localStorage.login = response.data;
             $location.path("/main");
 
         }, function errorCallback(response) {
