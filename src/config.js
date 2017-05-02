@@ -41,6 +41,7 @@ app.controller('JoinController', function($scope, $location) {
 });
 
 app.controller('LoginController', function($scope, $location, $http,$localStorage) {
+    var modal = document.getElementById('myModal');
     $scope.Login = function() {
 
         var LoginObj = {
@@ -57,10 +58,14 @@ app.controller('LoginController', function($scope, $location, $http,$localStorag
             $location.path("/main");
 
         }, function errorCallback(response) {
-            alert("Kullanıcı adı veya şifre hatalı");
+            //alert("Kullanıcı adı veya şifre hatalı");
+            modal.style.display = "block";
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
+    }
+    $scope.close = function() {
+        modal.style.display = "none";
     }
 });
 
@@ -74,3 +79,6 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
+
+
