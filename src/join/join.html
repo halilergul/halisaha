@@ -7,34 +7,39 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a ng-click="Login()">Anasayfa</a>
             <a ng-click="Main()">Maça Katılanlar</a>
-            <a href="#">Logout</a>
+            <a ng-click="LogOut()">Logout</a>
         </div>
-        <div class="menubutton" onclick="openNav()"><img src="assets/images/menubutton.png"> 
+        <div class="menubutton" onclick="openNav()"><img src="assets/images/menubutton.png">
         </div>
         <div id="logo-main">
             <img src="assets/images/logo_white.png" alt="">
         </div>
         <div id="user">
-            <img src="assets/images/user_pic.png" alt="">
-            <h1>Maça Katılanlar</h1>
-            <span>ART DIRECTOR, TASARIM</span>
+            <h1 class="underline">Maça Katılanlar</h1>
         </div>
-        <div id="content">
+        <div id="list">
             <div class="col-xs-12 text">
-                <h2 class="title"><span>SIRADAKİ MAÇ TARİHİ</span></h2>
-                <p class="day">24</p>
-                <p class="month">Nis</p>
-                <p class="year">2017</p>
-                <div class="status">
-                    <button>KATILIM DURUMU&nbsp;DEĞİŞTİR</button>
-                    <select name="status" id="status">
-                        <option value="1">Katılıyorum</option>
-                        <option value="2">Katılmıyorum</option>
-                    </select>
-                </div>
+                <ul>
+                    <li>Halil Ergül <span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Umut Uysal<span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Gedizhan Gülesin<span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Ulvi Aksoy<span class="attendee pull-right">Katılıyor</span></li>
+                    <li>İlker Nacaklı <span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Mahmut Özben <span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Furkan Kılıç <span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Serkan Yılmaz<span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Mustafa Tonkuş<span class="attendee pull-right">Katılıyor</span></li>
+                    <li>Tayfun Sezer<span class="attendee pull-right">Katılıyor</span></li>
+                    <ul>
+                        <li>Ali Kemal Arslankeçecioğlu<span class="attendee pull-right red">Katılmıyor</span></li>
+                        <li>Serdar Güler<span class="attendee pull-right red">Katılmıyor</span></li>
+                        <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
+                        <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
+                        <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
+                        <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
+                        <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
+                        <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
+                    </ul>
             </div>
-            <div class="status-text">KATILIYORUM</div>
-            <img src="assets/images/triangle.png" alt="">
         </div>
     </div>
-</div>
