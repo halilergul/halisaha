@@ -33,8 +33,8 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
     var date = new Date($localStorage.currentMatchInfo.MatchDate);
 
     $scope.matchyear = date.getFullYear();
-    $scope.matchmonth = monthNames[date.getMonth() + 1];
-    $scope.matchday = date.getDay();
+    $scope.matchmonth = monthNames[date.getMonth()];
+    $scope.matchday = date.getDate();
     if ($localStorage.currentMatchInfo.IsAttending) {
         $scope.matchattendee = "Katılıyorum";
     } else {
@@ -140,7 +140,7 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
 
 
 
-                //console.log(response);
+                console.log(response);
 
                 $localStorage.currentMatchInfo = response.data.Result;
 
