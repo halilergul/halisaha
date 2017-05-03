@@ -106,6 +106,15 @@ app.controller('JoinController', function($scope, $location) {
     $scope.Login = function() {
         $location.path("/main");
     }
+
+    $scope.Main = function() {
+        $location.path("/join");
+    }
+
+    $scope.LogOut = function() {
+        $location.path("/login");
+        $localStorage.$reset();
+    }
 });
 
 
