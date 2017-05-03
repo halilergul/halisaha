@@ -21,6 +21,7 @@ app.config(['$routeProvider', function($routeProvider, $scope) {
 
 
 app.controller('MainController', function($scope, $location, $http, $localStorage) {
+    var modal = document.getElementById('myModal');
     //console.log($localStorage.login);
     //console.log($localStorage.currentMatchInfo);
 
@@ -50,7 +51,7 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
         $localStorage.$reset();
     }
 
-        $scope.Attending = function(){
+    $scope.Attending = function() {
 
         var AttendingObj = {};
 
@@ -62,22 +63,42 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
         console.log($localStorage.login);
         console.log(AttendingObj);
         $http({
-                method: 'POST',
-                url: ApiUrl + 'MatchAttendance',
-                data: AttendingObj
-            }).then(function successCallback(response) {
-                
-                console.log(response);
-                $scope.matchattendee = response.data.Message;
-                console.log( response.data.Message);
+            method: 'POST',
+            url: ApiUrl + 'MatchAttendance',
+            data: AttendingObj
+        }).then(function successCallback(response) {
 
-            }, function errorCallback(response) {
-                //alert("Kullanıcı adı veya şifre hatalı");
-                modal.style.display = "block";
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
-};
+            console.log(response);
+            $scope.matchattendee = response.data.Message;
+            modal.style.display = "block";
+            console.log(response.data.Message);
+
+        }, function errorCallback(response) {
+            //alert("Kullanıcı adı veya şifre hatalı");
+            modal.style.display = "block";
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+
+        $scope.close = function() {
+            modal.style.display = "none";
+        }
+    };
+
+
+    if ($localStorage.currentMatchInfo.IsAttending) {
+        $scope.true = 1;
+    } else {
+
+        $scope.true = 0;
+    }
+
+    $scope.typeOptions = [
+        { name: 'KATILMIYORUM', value: 'KATILMIYORUM' },
+        { name: 'KATILIYORUM', value: 'KATILIYORUM' }
+    ];
+
+    $scope.selectedItem = { type: $scope.typeOptions[$scope.true].value };
 
 });
 
