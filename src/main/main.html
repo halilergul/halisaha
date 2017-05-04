@@ -28,8 +28,7 @@
                     <p class="year">{{matchyear}}</p>
                     <div class="status">
                         <button>KATILIM DURUMU&nbsp;DEĞİŞTİR</button>
-                        <select ng-model="selectedItem.type" ng-change="Attending()" required ng-options="option.value as option.value for option in typeOptions" name="status" id="status">
-                        </select>
+                        <select ng-model="selectedItem.type" ng-change="Attending()" required ng-options="option.value as option.value for option in typeOptions" name="status" id="status"></select>
                     </div>
                 </div>
                 <div class="status-text" ng-class="{'red': selectedItem.type == 'KATILMIYORUM'}">{{selectedItem.type}}</div>

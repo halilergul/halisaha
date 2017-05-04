@@ -30,7 +30,10 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
     ];
 
     $scope.firstname = $localStorage.login.FirstName + " " + $localStorage.login.LastName;
-    var date = new Date($localStorage.currentMatchInfo.MatchDate);
+
+    var matchDate = $localStorage.currentMatchInfo.MatchDate;
+    //console.log(matchDate);
+    var date = new Date(matchDate);
 
     $scope.matchyear = date.getFullYear();
     $scope.matchmonth = monthNames[date.getMonth()];
@@ -41,6 +44,7 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
         $scope.matchattendee = "Katılmıyorum";
     }
+
 
     $scope.Main = function() {
         $location.path("/join");
@@ -60,18 +64,28 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
         AttendingObj.UserId = $localStorage.login.UserID;
         AttendingObj.MobileSessionID = $localStorage.login.SessionID;
 
-        console.log($localStorage.login);
-        console.log(AttendingObj);
+        var status = document.getElementById("status").value;
+
+        //console.log($localStorage.login);
+        //console.log(AttendingObj);
+        //console.log(status);
         $http({
             method: 'POST',
             url: ApiUrl + 'MatchAttendance',
             data: AttendingObj
         }).then(function successCallback(response) {
 
-            console.log(response);
+            //console.log(response);
             $scope.matchattendee = response.data.Message;
             modal.style.display = "block";
-            console.log(response.data.Message);
+            //console.log(response.data.Message);
+
+            if (response.data.Message == "Artık şirkette rahat rahat dolaşabilirsin..") {
+                $localStorage.currentMatchInfo.IsAttending = true
+            } else {
+                $localStorage.currentMatchInfo.IsAttending = false
+            }
+
 
         }, function errorCallback(response) {
             //alert("Kullanıcı adı veya şifre hatalı");
@@ -102,9 +116,10 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
 });
 
-app.controller('JoinController', function($scope, $location) {
+app.controller('JoinController', function($scope, $location, $http, $localStorage) {
     $scope.Login = function() {
         $location.path("/main");
+        //console.log($localStorage.currentMatchInfo.IsAttending);
     }
 
     $scope.Main = function() {
@@ -136,7 +151,6 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
             data: LoginObj
         }).then(function successCallback(response) {
             $localStorage.login = response.data;
-
             CurrentMatchUserInfoObj.UserId = response.data.UserID;
             CurrentMatchUserInfoObj.MobileSessionID = response.data.SessionID;
             //console.log(CurrentMatchUserInfoObj);
@@ -147,20 +161,15 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
                 data: CurrentMatchUserInfoObj
             }).then(function successCallback(response) {
 
-
-
-                console.log(response);
-
+                //console.log(response);
                 $localStorage.currentMatchInfo = response.data.Result;
-
+                $location.path("/main");
             }, function errorCallback(response) {
                 //alert("Kullanıcı adı veya şifre hatalı");
                 modal.style.display = "block";
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
-
-            $location.path("/main");
 
         }, function errorCallback(response) {
             //alert("Kullanıcı adı veya şifre hatalı");
