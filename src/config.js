@@ -132,6 +132,24 @@ app.controller('JoinController', function($scope, $location, $http, $localStorag
         $location.path("/login");
         $localStorage.$reset();
     }
+
+    $http({
+        method: 'POST',
+        url: ApiUrl + 'AttendanceList',
+        data: {
+            MatchId: null,
+            UserId: $localStorage.login.UserID,
+            MobileSessionID: $localStorage.login.SessionID
+        }
+    }).then(function successCallback(response) {
+        console.log(response);
+        $scope.attendanceList = response.data;
+    }, function errorCallback(response) {
+        //alert("Kullanıcı adı veya şifre hatalı");
+        modal.style.display = "block";
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
 });
 
 

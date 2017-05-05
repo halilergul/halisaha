@@ -20,26 +20,16 @@
         <div id="list">
             <div class="col-xs-12 text">
                 <ul>
-                    <li>Halil Ergül <span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Umut Uysal<span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Gedizhan Gülesin<span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Ulvi Aksoy<span class="attendee pull-right">Katılıyor</span></li>
-                    <li>İlker Nacaklı <span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Mahmut Özben <span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Furkan Kılıç <span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Serkan Yılmaz<span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Mustafa Tonkuş<span class="attendee pull-right">Katılıyor</span></li>
-                    <li>Tayfun Sezer<span class="attendee pull-right">Katılıyor</span></li>
+                    <li ng-repeat="attendance in attendanceList.ResultList | filter : IsAttending = true">
+                        {{attendance.UserName}}
+                        <span class="attendee pull-right">{{attendance.AttendanceStatus}}</span>
+                    </li>
                 </ul>
                 <ul>
-                    <li>Ali Kemal Arslankeçecioğlu<span class="attendee pull-right red">Katılmıyor</span></li>
-                    <li>Serdar Güler<span class="attendee pull-right red">Katılmıyor</span></li>
-                    <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
-                    <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
-                    <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
-                    <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
-                    <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
-                    <li>Kubilay Akyüz<span class="attendee pull-right red">Katılmıyor</span></li>
+                    <li ng-repeat="attendance in attendanceList.ResultList | filter : IsAttending = false">
+                        {{attendance.UserName}}
+                        <span class="attendee red pull-right">{{attendance.AttendanceStatus}}</span>
+                    </li>
                 </ul>
             </div>
         </div>
