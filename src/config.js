@@ -31,6 +31,8 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
     $scope.firstname = $localStorage.login.FirstName + " " + $localStorage.login.LastName;
 
+    $scope.position = $localStorage.login.Position;
+
     var matchDate = $localStorage.currentMatchInfo.MatchDate;
     //console.log(matchDate);
     var date = new Date(matchDate);
