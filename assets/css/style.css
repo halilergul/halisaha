@@ -92,6 +92,7 @@ body {
     display: block;
     margin: 25px auto;
     margin-bottom: 10px;
+    border-radius: 100%;
 }
 
 #user h1 {

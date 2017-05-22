@@ -8,6 +8,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a ng-click="Login()">Anasayfa</a>
                 <a ng-click="Main()">Maça Katılanlar</a>
+                <a ng-click="Cash()">Kasa</a>
                 <a ng-click="LogOut()">Logout</a>
             </div>
             <div class="menubutton" onclick="openNav()"><img src="assets/images/menubutton.png">
@@ -16,7 +17,7 @@
                 <img src="assets/images/logo_white.png" alt="">
             </div>
             <div id="user">
-                <img src="assets/images/user_pic.png" alt="">
+                <img src="{{photo}}" alt="">
                 <h1>{{firstname}}</h1>
                 <span>{{position}}</span>
             </div>

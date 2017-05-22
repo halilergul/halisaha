@@ -2,6 +2,8 @@ var app = angular.module('myApp', ['ngRoute', 'ngStorage']);
 
 var ApiUrl = "http://demo.caretta.net/halisahaapi/carettapi/"
 
+var PhotoUrl = "https://randomuser.me/api/?gender=male"
+
 app.config(['$routeProvider', function($routeProvider, $scope) {
     $routeProvider
         .when('/login', {
@@ -13,6 +15,9 @@ app.config(['$routeProvider', function($routeProvider, $scope) {
         }).when('/join', {
             templateUrl: 'src/join/join.html',
             controller: 'JoinController'
+        }).when('/cash', {
+            templateUrl: 'src/cash/cash.html',
+            controller: 'CashController'
         }).otherwise({
             redirectTo: '/login'
         });
@@ -50,6 +55,10 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
     $scope.Main = function() {
         $location.path("/join");
+    }
+
+    $scope.Cash = function() {
+        $location.path("/cash")
     }
 
     $scope.LogOut = function() {
@@ -116,6 +125,13 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
     $scope.selectedItem = { type: $scope.typeOptions[$scope.true].value };
 
+
+    $http.get("https://randomuser.me/api/?gender=male")
+        .then(function(response) {
+            $scope.photo = response.data.results[0].picture.large;
+            //console.log(response.data.results[0].picture.medium);
+        });
+
 });
 
 app.controller('JoinController', function($scope, $location, $http, $localStorage) {
@@ -126,6 +142,10 @@ app.controller('JoinController', function($scope, $location, $http, $localStorag
 
     $scope.Main = function() {
         $location.path("/join");
+    }
+
+    $scope.Cash = function() {
+        $location.path("/cash")
     }
 
     $scope.LogOut = function() {
@@ -203,6 +223,47 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
     }
 });
 
+app.controller('CashController', function($scope, $location, $http, $localStorage) {
+
+
+    
+    $scope.Login = function() {
+        $location.path("/main");
+        //console.log($localStorage.currentMatchInfo.IsAttending);
+    }
+
+    $scope.Cash = function() {
+        $location.path("/cash");
+    }
+
+    $scope.Main = function() {
+        $location.path("/join");
+    }
+
+    $scope.LogOut = function() {
+        $location.path("/login");
+        $localStorage.$reset();
+    }
+
+    $http({
+        method: 'POST',
+        url: ApiUrl + 'AttendanceList',
+        data: {
+            MatchId: null,
+            UserId: $localStorage.login.UserID,
+            MobileSessionID: $localStorage.login.SessionID
+        }
+    }).then(function successCallback(response) {
+        console.log(response);
+        $scope.attendanceList = response.data;
+    }, function errorCallback(response) {
+        //alert("Kullanıcı adı veya şifre hatalı");
+        modal.style.display = "block";
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
+});
+
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
@@ -213,3 +274,4 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
