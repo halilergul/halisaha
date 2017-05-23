@@ -7,7 +7,8 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a ng-click="Login()">Anasayfa</a>
             <a ng-click="Main()">Maça Katılanlar</a>
-            <a ng-click="Cash()">Kasa</a>
+            <a ng-click="Cash()" ng-show="isAdmin">Kasa</a>
+            <a ng-click="Debt()">Borç Harç</a>
             <a ng-click="LogOut()">Logout</a>
         </div>
         <div class="menubutton" onclick="openNav()"><img src="assets/images/menubutton.png">
@@ -19,22 +20,56 @@
             <h1 class="underline">Kasa</h1>
         </div>
         <div id="list">
-        <input type="number" id="" ng-model="tutar" style="color: #000;">
-
+            <div class="row" style="margin: 0 -5px;">
+                <div class="col-xs-6" style="padding: 0 5px;">
+                    <input type="number" id="" ng-model="person" style="color: #000; width: 100%; padding: 5px 10px;" placeholder="Kişi Başı Toplam">
+                </div>
+                <div class="col-xs-6" style="padding: 0 5px;">
+                    <input type="number" id="" ng-model="all" style="color: #000; width: 100%; padding: 5px 10px;" placeholder="Sahaya Verilecek">
+                </div>
+                <div class="col-xs-12" style="padding: 0 5px;">
+                    <button class="btn btn-success" ng-click="approve()" style="width: 100%; margin-top: 5px;">ONAYLA</button>
+                </div>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Katılanlar</th>
                         <th>T.P.</th>
+                        <th>V.P.</th>
                         <th>T.B.</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="attendance in attendanceList.ResultList | filter : IsAttending = true">
-                        <td>{{attendance.UserName}}</td>
-                        <td>{{tutar / 14 | number}}</td>
+                        <td>
+                            <div ng-click="payButton(attendance.UserName)">{{attendance.UserName}}</div>
+                        </td>
+                        <td>{{personAmount}}</td>
+                        <td style="color: #42fd4a">0</td>
+                        <td style="color: #ff1b1b">0</td>
+                </tbody>
+                <tbody>
+                    <tr ng-repeat="attendance in attendanceList.ResultList | filter : IsAttending = true | filter : IsPaying = false">
+                        <td>
+                            <div ng-click="payButton()">{{attendance.UserName}}</div>
+                        </td>
+                        <td>20</td>
+                        <td style="color: #42fd4a">0</td>
                         <td style="color: #ff1b1b">0</td>
                 </tbody>
             </table>
+            <h3>TOPLAM: <span style="color: #42fd4a">0</span></h3>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" ng-click="close()">&times;</span>
+            <div class="amount-form">
+                <input type="number" class="amount-input">
+                <button class="btn btn-success" ng-click="userAmount()">ALINDI</button>
+            </div>
         </div>
     </div>

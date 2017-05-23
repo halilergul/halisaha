@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngStorage']);
+var app = angular.module('myApp', ['ngRoute', 'ngStorage', 'ngCookies']);
 
 var ApiUrl = "http://demo.caretta.net/halisahaapi/carettapi/"
 
@@ -18,6 +18,9 @@ app.config(['$routeProvider', function($routeProvider, $scope) {
         }).when('/cash', {
             templateUrl: 'src/cash/cash.html',
             controller: 'CashController'
+        }).when('/debt', {
+            templateUrl: 'src/debt/debt.html',
+            controller: 'DebtController'
         }).otherwise({
             redirectTo: '/login'
         });
@@ -53,12 +56,19 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
     }
 
 
+    $scope.isAdmin = $localStorage.isAdmin;
+
+
     $scope.Main = function() {
         $location.path("/join");
     }
 
     $scope.Cash = function() {
         $location.path("/cash")
+    }
+
+    $scope.Debt = function() {
+        $location.path("/debt");
     }
 
     $scope.LogOut = function() {
@@ -135,6 +145,10 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 });
 
 app.controller('JoinController', function($scope, $location, $http, $localStorage) {
+
+    $scope.isAdmin = $localStorage.isAdmin;
+
+
     $scope.Login = function() {
         $location.path("/main");
         //console.log($localStorage.currentMatchInfo.IsAttending);
@@ -146,6 +160,10 @@ app.controller('JoinController', function($scope, $location, $http, $localStorag
 
     $scope.Cash = function() {
         $location.path("/cash")
+    }
+
+    $scope.Debt = function() {
+        $location.path("/debt");
     }
 
     $scope.LogOut = function() {
@@ -173,11 +191,31 @@ app.controller('JoinController', function($scope, $location, $http, $localStorag
 });
 
 
-app.controller('LoginController', function($scope, $location, $http, $localStorage) {
+app.controller('LoginController', function($scope, $location, $http, $localStorage, $cookies, $cookieStore) {
     var modal = document.getElementById('myModal');
 
-    $scope.Login = function() {
+    $scope.isAdmin = $localStorage.isAdmin;
 
+    $scope.remember = function() {
+
+        if ($scope.check) {
+            $cookieStore.put('nameCookies', $scope.username);
+            $cookieStore.put('passCookies', $scope.password);
+            $cookieStore.put('checkCookies', $scope.check);
+
+        } else {
+            $cookieStore.remove('nameCookies');
+            $cookieStore.remove('passCookies');
+            $cookieStore.remove('checkCookies');
+        }
+    }
+
+    $scope.username = $cookieStore.get('nameCookies');
+    $scope.password = $cookieStore.get('passCookies');
+    $scope.check = $cookieStore.get('checkCookies');
+
+
+    $scope.Login = function() {
         var LoginObj = {
             Username: $scope.username,
             Password: $scope.password
@@ -193,7 +231,8 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
             $localStorage.login = response.data;
             CurrentMatchUserInfoObj.UserId = response.data.UserID;
             CurrentMatchUserInfoObj.MobileSessionID = response.data.SessionID;
-            //console.log(CurrentMatchUserInfoObj);
+            $localStorage.isAdmin = response.data.IsAdmin;
+            //console.log($localStorage.isAdmin);
 
             $http({
                 method: 'POST',
@@ -218,15 +257,44 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
             // or server returns response with an error status.
         });
     }
+
+
+
     $scope.close = function() {
         modal.style.display = "none";
     }
 });
 
 app.controller('CashController', function($scope, $location, $http, $localStorage) {
+    var modal = document.getElementById('myModal');
 
 
-    
+    $scope.IsPaying = true;
+    //$scope.isAdmin = true;
+    $scope.isAdmin = $localStorage.isAdmin;
+
+
+    $scope.payButton = function(user) {
+        modal.style.display = "block";
+        console.log(user);
+    }
+
+    $scope.close = function() {
+        modal.style.display = "none";
+    }
+
+    $scope.userAmount = function() {
+
+
+        modal.style.display = "none";
+    }
+
+
+    $scope.approve = function() {
+        $scope.personAmount = $scope.person;
+    }
+
+
     $scope.Login = function() {
         $location.path("/main");
         //console.log($localStorage.currentMatchInfo.IsAttending);
@@ -234,6 +302,10 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
 
     $scope.Cash = function() {
         $location.path("/cash");
+    }
+
+    $scope.Debt = function() {
+        $location.path("/debt");
     }
 
     $scope.Main = function() {
@@ -265,6 +337,54 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
 });
 
 
+app.controller('DebtController', function($scope, $location, $http, $localStorage) {
+    var modal = document.getElementById('myModal');
+
+    $scope.isAdmin = $localStorage.isAdmin;
+
+
+
+    $scope.Login = function() {
+        $location.path("/main");
+        //console.log($localStorage.currentMatchInfo.IsAttending);
+    }
+
+    $scope.Cash = function() {
+        $location.path("/cash");
+    }
+
+    $scope.Debt = function() {
+        $location.path("/debt");
+    }
+
+    $scope.Main = function() {
+        $location.path("/join");
+    }
+
+    $scope.LogOut = function() {
+        $location.path("/login");
+        $localStorage.$reset();
+    }
+
+    $http({
+        method: 'POST',
+        url: ApiUrl + 'AttendanceList',
+        data: {
+            MatchId: null,
+            UserId: $localStorage.login.UserID,
+            MobileSessionID: $localStorage.login.SessionID
+        }
+    }).then(function successCallback(response) {
+        console.log(response);
+        $scope.attendanceList = response.data;
+    }, function errorCallback(response) {
+        //alert("Kullanıcı adı veya şifre hatalı");
+        modal.style.display = "block";
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
+});
+
 /* Set the width of the side navigation to 250px */
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -274,4 +394,3 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
-

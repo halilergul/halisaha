@@ -1,0 +1,48 @@
+<div ng-controller="CashController">
+    <div id="image">
+        <img src="assets/images/main_bg.jpg" width="100%">
+    </div>
+    <div class="container">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a ng-click="Login()">Anasayfa</a>
+            <a ng-click="Main()">Maça Katılanlar</a>
+            <a ng-click="Cash()" ng-show="isAdmin">Kasa</a>
+            <a ng-click="Debt()">Borç Harç</a>
+            <a ng-click="LogOut()">Logout</a>
+        </div>
+        <div class="menubutton" onclick="openNav()"><img src="assets/images/menubutton.png">
+        </div>
+        <div id="logo-main">
+            <img src="assets/images/logo_white.png" alt="">
+        </div>
+        <div id="user">
+            <h1 class="underline">Borç Harç</h1>
+        </div>
+        <div id="list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Oyuncular</th>
+                        <th>Alacak</th>
+                        <th>Verecek</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="attendance in attendanceList.ResultList">
+                        <td>{{attendance.UserName}}</td>
+                        <td style="color: #42fd4a">0</td>
+                        <td style="color: #ff1b1b">0</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" ng-click="close()">&times;</span>
+            <input type="number">
+            <button ng-click="userAmount()"></button>
+        </div>
+    </div>

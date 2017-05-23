@@ -371,3 +371,24 @@ body {
     border-bottom: 1px solid #fff;
     padding-bottom: 10px;
 }
+
+.amount-form {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.amount-form input {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    outline: none;
+    color: #000;
+}
+.amount-form .btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+}

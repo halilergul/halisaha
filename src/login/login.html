@@ -15,7 +15,8 @@
                 <div class="form-group">
                     <input type="password" ng-model="password" class="form-control" id="pwd" placeholder="Parola">
                     <div class="checkbox col-xs-12">
-                        <input type="checkbox">Beni Hatırla</label>
+                        <label>
+                            <input type="checkbox" ng-model="check" ng-change="remember()">Beni Hatırla</label>
                     </div>
                     <button type="submit" ng-click="Login()" class="btn-login col-xs-12 login-button-action">Giriş Yap</button>
                 </div>
