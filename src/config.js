@@ -289,7 +289,7 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
     }
 });
 
-app.controller('CashController', function($scope, $location, $http, $localStorage) {
+app.controller('CashController', function($scope, $location, $http, $localStorage, $filter) {
     var modal = document.getElementById('myModal');
 
 
@@ -298,8 +298,12 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
     $scope.isAdmin = $localStorage.isAdmin;
 
 
-    $scope.payButton = function(user) {
+    $scope.payButton = function(user, userId) {
+        $scope.payUser = "";
         modal.style.display = "block";
+        $scope.payUserId = userId;
+        $scope.payUserName = user;
+
         console.log(user);
     }
 
@@ -307,11 +311,30 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
         modal.style.display = "none";
     }
 
-    $scope.userAmount = function() {
-
-
+    $scope.userAmount = function(id) {
         modal.style.display = "none";
+
+
+        var para = $scope.payUser;
+        var name = $scope.payUserName;
+
+        var newItem = {
+            UserId: id,
+            UserName: name,
+            VerilenPara: para
+        }
+        angular.forEach($scope.payList, function(attendance, $index) {
+            if (attendance.UserId === id) {
+                //console.log($scope.attendanceList.ResultList[$index]);
+                $scope.verilen = $scope.payUser;
+
+                $scope.payList[$index] = newItem;
+                //angular.copy(newItem, row);
+            }
+        })
     }
+
+
 
 
     $scope.approve = function() {
@@ -359,6 +382,7 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
     }).then(function successCallback(response) {
         console.log(response);
         $scope.attendanceList = response.data;
+        $scope.payList = $filter('filter')($scope.attendanceList.ResultList, { IsAttending: true });
     }, function errorCallback(response) {
         //alert("Kullanıcı adı veya şifre hatalı");
         modal.style.display = "block";

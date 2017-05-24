@@ -21,7 +21,7 @@
         </div>
         <div id="list">
             <div class="text" style="padding: 0;">
-                <div class="row" style="margin: 0 -5px;">
+                <div class="row" style="margin: 0;">
                     <div class="col-xs-6" style="padding: 0 5px;">
                         <input type="number" id="" ng-model="person" style="color: #000; width: 100%; padding: 5px 10px;" placeholder="Kişi Başı Toplam">
                     </div>
@@ -32,6 +32,7 @@
                         <button class="btn btn-success" ng-click="approve()" style="width: 100%; margin-top: 5px;">ONAYLA</button>
                     </div>
                 </div>
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -42,23 +43,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="attendance in attendanceList.ResultList | filter : IsAttending = true">
+                        <tr ng-repeat="attendance in payList">
                             <td>
-                                <div ng-click="payButton(attendance.UserName)">{{attendance.UserName}}</div>
+                                <div ng-click="payButton(attendance.UserName, attendance.UserId)">{{attendance.UserName}}</div>
                             </td>
                             <td>{{personAmount}} TL</td>
-                            <td style="color: #42fd4a">0 TL</td>
+                            <td style="color: #42fd4a">{{attendance.VerilenPara}} TL</td>
                             <td style="color: #ff1b1b">0 TL</td>
                     </tbody>
-                    <tbody>
-                        <tr ng-repeat="attendance in attendanceList.ResultList | filter : IsAttending = true | filter : IsPaying = false">
-                            <td>
-                                <div ng-click="payButton()">{{attendance.UserName}}</div>
-                            </td>
-                            <td>20</td>
-                            <td style="color: #42fd4a">0</td>
-                            <td style="color: #ff1b1b">0</td>
-                    </tbody>
+                    
                 </table>
                 <h3>TOPLAM: <span style="color: #42fd4a">0</span></h3>
             </div>
@@ -70,8 +63,8 @@
         <div class="modal-content">
             <span class="close" ng-click="close()">&times;</span>
             <div class="amount-form">
-                <input type="number" class="amount-input">
-                <button class="btn btn-success" ng-click="userAmount()">ALINDI</button>
+                <input type="number" id="{{payUserId}}" class="amount-input" ng-model="payUser">
+                <button class="btn btn-success" ng-click="userAmount(payUserId)">ALINDI</button>
             </div>
         </div>
     </div>
