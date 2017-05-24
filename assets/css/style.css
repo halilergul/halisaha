@@ -2,8 +2,13 @@ body {
     background-color: #121518;
     font-family: "San Francisco";
     font-weight: 200;
-    -webkit-overflow-scrolling: touch;
     color: #fff;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 #image {
@@ -377,6 +382,7 @@ body {
     overflow: hidden;
     width: 100%;
 }
+
 .amount-form input {
     width: 100%;
     border: 1px solid #ddd;
@@ -384,6 +390,7 @@ body {
     outline: none;
     color: #000;
 }
+
 .amount-form .btn {
     position: absolute;
     right: 0;
