@@ -326,7 +326,6 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
         angular.forEach($scope.payList, function(attendance, $index) {
             if (attendance.UserId === id) {
                 //console.log($scope.attendanceList.ResultList[$index]);
-                $scope.verilen = $scope.payUser;
 
                 $scope.payList[$index] = newItem;
                 //angular.copy(newItem, row);
