@@ -41,6 +41,7 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
     $scope.position = $localStorage.login.Position;
 
+
     var matchDate = $localStorage.currentMatchInfo.MatchDate;
     //console.log(matchDate);
     var date = new Date(matchDate);
@@ -73,7 +74,16 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
     $scope.LogOut = function() {
         $location.path("/login");
+        var name = $localStorage.username;
+        var pass = $localStorage.password;
+        var check = $localStorage.check;
+
         $localStorage.$reset();
+        $localStorage.username = name;
+        $localStorage.password = pass;
+        $localStorage.check = check;
+
+
     }
 
     $scope.Attending = function() {
@@ -168,7 +178,16 @@ app.controller('JoinController', function($scope, $location, $http, $localStorag
 
     $scope.LogOut = function() {
         $location.path("/login");
+        var name = $localStorage.username;
+        var pass = $localStorage.password;
+        var check = $localStorage.check;
+
         $localStorage.$reset();
+        $localStorage.username = name;
+        $localStorage.password = pass;
+        $localStorage.check = check;
+
+
     }
 
     $http({
@@ -194,25 +213,30 @@ app.controller('JoinController', function($scope, $location, $http, $localStorag
 app.controller('LoginController', function($scope, $location, $http, $localStorage, $cookies, $cookieStore) {
     var modal = document.getElementById('myModal');
 
-    $scope.isAdmin = $localStorage.isAdmin;
+
 
     $scope.remember = function() {
 
         if ($scope.check) {
-            $cookieStore.put('nameCookies', $scope.username);
-            $cookieStore.put('passCookies', $scope.password);
-            $cookieStore.put('checkCookies', $scope.check);
+            $localStorage.username = $scope.username;
+            $localStorage.password = $scope.password;
+            $localStorage.check = $scope.check;
 
         } else {
-            $cookieStore.remove('nameCookies');
-            $cookieStore.remove('passCookies');
-            $cookieStore.remove('checkCookies');
+            $localStorage.$reset();
+
         }
     }
 
-    $scope.username = $cookieStore.get('nameCookies');
-    $scope.password = $cookieStore.get('passCookies');
-    $scope.check = $cookieStore.get('checkCookies');
+    $scope.username = $localStorage.username;
+    $scope.password = $localStorage.password;
+    $scope.check = $localStorage.check;
+
+
+
+    //$scope.username = $cookieStore.get('nameCookies');
+    //$scope.password = $cookieStore.get('passCookies');
+    //$scope.check = $cookieStore.get('checkCookies');
 
 
     $scope.Login = function() {
@@ -232,7 +256,7 @@ app.controller('LoginController', function($scope, $location, $http, $localStora
             CurrentMatchUserInfoObj.UserId = response.data.UserID;
             CurrentMatchUserInfoObj.MobileSessionID = response.data.SessionID;
             $localStorage.isAdmin = response.data.IsAdmin;
-            //console.log($localStorage.isAdmin);
+            console.log($localStorage.isAdmin);
 
             $http({
                 method: 'POST',
@@ -314,7 +338,14 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
 
     $scope.LogOut = function() {
         $location.path("/login");
+        var name = $localStorage.username;
+        var pass = $localStorage.password;
+        var check = $localStorage.check;
+
         $localStorage.$reset();
+        $localStorage.username = name;
+        $localStorage.password = pass;
+        $localStorage.check = check;
     }
 
     $http({
@@ -363,7 +394,14 @@ app.controller('DebtController', function($scope, $location, $http, $localStorag
 
     $scope.LogOut = function() {
         $location.path("/login");
+        var name = $localStorage.username;
+        var pass = $localStorage.password;
+        var check = $localStorage.check;
+
         $localStorage.$reset();
+        $localStorage.username = name;
+        $localStorage.password = pass;
+        $localStorage.check = check;
     }
 
     $http({
