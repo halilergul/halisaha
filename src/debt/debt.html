@@ -20,21 +20,23 @@
             <h1 class="underline">Borç Harç</h1>
         </div>
         <div id="list">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Oyuncular</th>
-                        <th>Alacak</th>
-                        <th>Verecek</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="attendance in attendanceList.ResultList">
-                        <td>{{attendance.UserName}}</td>
-                        <td style="color: #42fd4a">0</td>
-                        <td style="color: #ff1b1b">0</td>
-                </tbody>
-            </table>
+            <div class="text" style="padding: 0;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Oyuncular</th>
+                            <th>Alacak</th>
+                            <th>Verecek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="attendance in attendanceList.ResultList">
+                            <td>{{attendance.UserName}}</td>
+                            <td style="color: #42fd4a">0 TL</td>
+                            <td style="color: #ff1b1b">0 TL</td>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- The Modal -->
