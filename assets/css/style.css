@@ -88,7 +88,7 @@ body {
 }
 
 #user img {
-    max-width: 35%;
+    max-width: 32%;
     display: block;
     margin: 25px auto;
     margin-bottom: 10px;
@@ -105,7 +105,8 @@ body {
 #user span {
     display: block;
     color: #007f39;
-    font-size: 12px;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px #000;
     text-align: center;
     font-style: italic;
     font-weight: 400;
@@ -330,7 +331,9 @@ body {
     float: right;
     font-size: 28px;
     font-weight: bold;
-    margin-top: 7px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
 }
 
 .close:hover,
@@ -391,4 +394,23 @@ body {
     bottom: 0;
     height: 100%;
     border-radius: 0;
+}
+
+
+@media only screen and (min-device-width: 340px) {
+    .status {
+        bottom: -20px;
+    }
+    #user img {
+        max-width: 100px;
+    }
+    .status-text {
+        padding: 7%;
+    }
+}
+
+@media only screen and (min-device-width: 400px) {
+    .status {
+        bottom: -35px;
+    }
 }

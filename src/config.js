@@ -298,6 +298,7 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
     $scope.isAdmin = $localStorage.isAdmin;
 
 
+
     $scope.payButton = function(user, userId) {
         $scope.payUser = "";
         modal.style.display = "block";
@@ -323,16 +324,21 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
             UserName: name,
             VerilenPara: para
         }
+
         angular.forEach($scope.payList, function(attendance, $index) {
             if (attendance.UserId === id) {
                 //console.log($scope.attendanceList.ResultList[$index]);
-
                 $scope.payList[$index] = newItem;
-                //angular.copy(newItem, row);
             }
+
         })
+
+        $scope.total = $scope.total + para;
+
     }
 
+
+    
 
 
 
@@ -382,6 +388,15 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
         console.log(response);
         $scope.attendanceList = response.data;
         $scope.payList = $filter('filter')($scope.attendanceList.ResultList, { IsAttending: true });
+
+        // Total
+        var total = 0;
+        angular.forEach($scope.payList, function(attendance) {
+            total += attendance.UserId;
+        })
+        $scope.total = total;
+        return total;
+
     }, function errorCallback(response) {
         //alert("Kullanıcı adı veya şifre hatalı");
         modal.style.display = "block";
