@@ -22,10 +22,10 @@
         <div id="list">
             <div class="row" style="margin: 0;">
                 <div class="col-xs-6" style="padding: 0 5px;">
-                    <input type="number" id="" ng-model="person" style="color: #000; width: 100%; padding: 10px;" placeholder="Kişi Başı Toplam">
+                    <input type="number" pattern="[0-9]*" ng-model="person" style="color: #000; width: 100%; padding: 10px;" placeholder="Kişi Başı Toplam">
                 </div>
                 <div class="col-xs-6" style="padding: 0 5px;">
-                    <input type="number" id="" ng-model="all" style="color: #000; width: 100%; padding: 10px;" placeholder="Sahaya Verilecek">
+                    <input type="number" pattern="[0-9]*" ng-model="all" style="color: #000; width: 100%; padding: 10px;" placeholder="Sahaya Verilecek">
                 </div>
                 <div class="col-xs-12" style="padding: 0 5px;">
                     <button class="btn btn-success" ng-click="approve()" style="width: 100%; margin-top: 5px; height: 44px;">ONAYLA</button>
@@ -64,7 +64,7 @@
             <span class="close" ng-click="close()">&times;</span>
             <h4>Tutar Giriniz</h4>
             <div class="amount-form">
-                <input type="number" id="{{payUserId}}" class="amount-input" ng-model="payUser">
+                <input type="number" pattern="[0-9]*" id="{{payUserId}}" class="amount-input" ng-model="payUser">
                 <button class="btn btn-success" ng-click="userAmount(payUserId)" ng-disabled="payUser == ''">ALINDI</button>
             </div>
         </div>
