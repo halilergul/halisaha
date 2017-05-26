@@ -214,20 +214,19 @@ body {
 
 .sidenav {
     height: 100%;
-    width: 0px;
+    width: 250px;
     position: fixed;
     z-index: 100;
     top: 0;
-    left: 0;
+    left: -250px;
     background-color: #111;
     overflow-x: hidden;
     padding-top: 60px;
     transition: all ease 0.4s;
 }
-
 .sidenav.open {
-    width: 250px;
-}
+    left: 0px;
+} 
 
 
 /* The navigation menu links */
