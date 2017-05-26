@@ -1,0 +1,54 @@
+app.controller('NavController', function($scope, $location, $http, $localStorage) {
+    /* Set the width of the side navigation to 250px */
+    $scope.openNav = function() {    
+        document.getElementById("mySidenav").style.width = "250px";
+        $scope.overlay = true;
+    }
+
+    /* Set the width of the side navigation to 0 */
+    $scope.closeNav = function() { 
+        document.getElementById("mySidenav").style.width = "0";
+        $scope.overlay = false;
+    }
+
+    $scope.Login = function() {
+        $scope.overlay = false;
+        document.getElementById("mySidenav").style.width = "0";
+        $location.path("/main");
+    }
+
+    $scope.Main = function() {
+        $scope.overlay = false;
+        document.getElementById("mySidenav").style.width = "0";
+        $location.path("/join");
+    }
+
+    $scope.Cash = function() {
+        $scope.overlay = false;
+        document.getElementById("mySidenav").style.width = "0";
+        $location.path("/cash");
+    }
+
+    $scope.Debt = function() {
+        $scope.overlay = false;
+        document.getElementById("mySidenav").style.width = "0";
+        $location.path("/debt");
+    }
+
+    $scope.LogOut = function() {
+        $scope.overlay = false;
+        document.getElementById("mySidenav").style.width = "0";
+        $location.path("/login");
+
+        var name = $localStorage.username;
+        var pass = $localStorage.password;
+        var check = $localStorage.check;
+
+        $localStorage.$reset();
+
+        $localStorage.username = name;
+        $localStorage.password = pass;
+        $localStorage.check = check;
+
+    }
+});

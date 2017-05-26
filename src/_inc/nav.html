@@ -1,0 +1,12 @@
+<div ng-controller="NavController">
+    <div id="mySidenav" class="sidenav" >
+        <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
+        <a ng-click="Login()">Anasayfa</a>
+        <a ng-click="Main()">Maça Katılanlar</a>
+        <a ng-click="Cash()" ng-show="isAdmin">Kasa</a>
+        <a ng-click="Debt()">Borç Harç</a>
+        <a ng-click="LogOut()">Logout</a>
+    </div>
+    <div class="menubutton" ng-click="openNav()"><img src="assets/images/menubutton.png"></div>
+    <div class="overlay" ng-click="closeNav()" ng-show="overlay"></div>
+</div>

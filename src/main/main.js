@@ -24,33 +24,6 @@ app.controller('MainController', function($scope, $location, $http, $localStorag
 
     $scope.isAdmin = $localStorage.isAdmin;
 
-    $scope.Main = function() {
-        $location.path("/join");
-    }
-
-    $scope.Cash = function() {
-        $location.path("/cash")
-    }
-
-    $scope.Debt = function() {
-        $location.path("/debt");
-    }
-
-    $scope.LogOut = function() {
-        $location.path("/login");
-
-        var name = $localStorage.username;
-        var pass = $localStorage.password;
-        var check = $localStorage.check;
-
-        $localStorage.$reset();
-
-        $localStorage.username = name;
-        $localStorage.password = pass;
-        $localStorage.check = check;
-
-    }
-
     $scope.Attending = function() {
         var AttendingObj = {};
 
