@@ -15,12 +15,12 @@ body {
     right: 0;
     bottom: 0;
     opacity: 0.2;
-    z-index: 0;
+    z-index: 1;
 }
 
 .container {
+    z-index: 2;
     position: relative;
-    z-index: 101;
 }
 
 #logo {
@@ -214,19 +214,24 @@ body {
 
 .sidenav {
     height: 100%;
-    width: 250px;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
     position: fixed;
-    z-index: 100;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
     top: 0;
-    left: -250px;
+    left: 0;
     background-color: #111;
+    /* Black*/
     overflow-x: hidden;
+    /* Disable horizontal scroll */
     padding-top: 60px;
-    transition: all ease 0.4s;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
 }
-.sidenav.open {
-    left: 0px;
-} 
 
 
 /* The navigation menu links */
@@ -275,6 +280,7 @@ body {
 .menubutton img {
     width: 50%;
 }
+
 
 /* The Modal (background) */
 
@@ -360,20 +366,6 @@ body {
     color: #42fd4a;
 }
 
-#list input {
-    border: 0;
-    color: #000;
-    width: 100%;
-    padding: 10px;
-}
-
-#list .btn-success {
-    border-radius: 0;
-    width: 100%;
-    margin-top: 10px;
-    height: 40px;
-}
-
 #list ul li .attendee.red {
     color: #ff1b1b;
 }
@@ -406,38 +398,6 @@ body {
     border-radius: 0;
 }
 
-* {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-input {
-    -webkit-user-select: auto !important;
-    -khtml-user-select: auto !important;
-    -moz-user-select: auto !important;
-    -ms-user-select: auto !important;
-    user-select: auto !important;
-    outline: none;
-}
-
-button {
-    outline: none !important;
-}
-
-.overlay {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-}
-
 @media only screen and (min-device-width: 340px) {
     .status {
         bottom: -20px;
@@ -454,4 +414,20 @@ button {
     .status {
         bottom: -35px;
     }
+}
+
+* {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input {
+    -webkit-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    user-select: auto !important;
 }
