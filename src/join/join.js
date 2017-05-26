@@ -2,35 +2,6 @@ app.controller('JoinController', function($scope, $location, $http, $localStorag
 
     $scope.isAdmin = $localStorage.isAdmin;
 
-    $scope.Login = function() {
-        $location.path("/main");
-    }
-
-    $scope.Main = function() {
-        $location.path("/join");
-    }
-
-    $scope.Cash = function() {
-        $location.path("/cash")
-    }
-
-    $scope.Debt = function() {
-        $location.path("/debt");
-    }
-
-    $scope.LogOut = function() {
-        $location.path("/login");
-        var name = $localStorage.username;
-        var pass = $localStorage.password;
-        var check = $localStorage.check;
-
-        $localStorage.$reset();
-        $localStorage.username = name;
-        $localStorage.password = pass;
-        $localStorage.check = check;
-
-    }
-
     $http({
         method: 'POST',
         url: ApiUrl + 'AttendanceList',

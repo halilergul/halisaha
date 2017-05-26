@@ -1,18 +1,9 @@
-<div ng-controller="CashController">
+<div ng-include="'src/_inc/nav.html'"></div>
+<div ng-controller="DebtController">
     <div id="image">
         <img src="assets/images/main_bg.jpg" width="100%">
     </div>
     <div class="container">
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a ng-click="Login()">Anasayfa</a>
-            <a ng-click="Main()">Maça Katılanlar</a>
-            <a ng-click="Cash()" ng-show="isAdmin">Kasa</a>
-            <a ng-click="Debt()">Borç Harç</a>
-            <a ng-click="LogOut()">Logout</a>
-        </div>
-        <div class="menubutton" onclick="openNav()"><img src="assets/images/menubutton.png">
-        </div>
         <div id="logo-main">
             <img src="assets/images/logo_white.png" alt="">
         </div>

@@ -7,6 +7,6 @@
         <a ng-click="Debt()">Borç Harç</a>
         <a ng-click="LogOut()">Logout</a>
     </div>
-    <div class="menubutton" ng-click="openNav()"><img src="assets/images/menubutton.png"></div>
+    <div ng-hide="currentPath === '/login'" class="menubutton" ng-click="openNav()"><img src="assets/images/menubutton.png"></div>
     <div class="overlay" ng-click="closeNav()" ng-show="overlay"></div>
 </div>
