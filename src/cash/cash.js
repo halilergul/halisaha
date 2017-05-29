@@ -17,12 +17,13 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
 
     $scope.close = function() {
         modal.style.display = "none";
-        $scope.focusInput = false; 
+        $scope.focusInput = false;
     }
 
     $scope.userAmount = function(id) {
         modal.style.display = "none";
-
+        $scope.focusInput = false;
+        
         var para = $scope.payUser;
         var name = $scope.payUserName;
          var newItem = {
