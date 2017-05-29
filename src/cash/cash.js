@@ -10,12 +10,14 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
         modal.style.display = "block";
         $scope.payUserId = userId;
         $scope.payUserName = user;
+        $scope.focusInput = true; 
 
         console.log(user);
     }
 
     $scope.close = function() {
         modal.style.display = "none";
+        $scope.focusInput = false; 
     }
 
     $scope.userAmount = function(id) {
@@ -71,3 +73,16 @@ app.controller('CashController', function($scope, $location, $http, $localStorag
         // or server returns response with an error status.
     });
 });
+
+app.directive('focusMe', function () {
+    return {
+        link: function(scope, element, attrs) {
+            scope.$watch(attrs.focusMe, function(value) {
+                if(value === true) {
+                    element[0].focus();
+                    element[0].select();
+                }
+            });
+        }
+    };
+}); 
