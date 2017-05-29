@@ -25,28 +25,3 @@ app.config(['$routeProvider', function($routeProvider, $scope) {
             redirectTo: '/login'
         });
 }]);
-
-/*Loader*/
-app.run(function ($rootScope, $location,$route, $timeout) {
-
-    $rootScope.config = {};
-    $rootScope.config.app_url = $location.url();
-    $rootScope.config.app_path = $location.path();
-    $rootScope.layout = {};
-    $rootScope.layout.loading = false;
-
-    $rootScope.$on('$routeChangeStart', function () {
-        $timeout(function(){
-          $rootScope.layout.loading = true;          
-        });
-    });
-    $rootScope.$on('$routeChangeSuccess', function () {
-        $timeout(function(){
-          $rootScope.layout.loading = false;
-        }, 500);
-    });
-    $rootScope.$on('$routeChangeError', function () {
-        $rootScope.layout.loading = false;
-
-    });
-});
