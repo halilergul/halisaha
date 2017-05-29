@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <body>
+        <!-- Preloader -->
+        <div id="preloader" ng-hide="!layout.loading">
+            <div id="content" ng-hide="!layout.loading">
+                <div class="icon"><span class="loader loader-quart"></span></div>
+            </div>
+        </div>
         <ng-view></ng-view>
     </body>
     <script src="assets/js/angular.js"></script>

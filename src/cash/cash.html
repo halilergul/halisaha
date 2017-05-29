@@ -13,10 +13,10 @@
         <div id="list">
             <div class="row" style="margin: 0;">
                 <div class="col-xs-6" style="padding: 0 5px;">
-                    <input type="number" pattern="[0-9]*" ng-model="person" placeholder="Kişi Başı Toplam">
+                    <input type="number" pattern="[0-9]*" ng-model="person" ng-focus="focused=true" ng-blur="focused=false" placeholder="Kişi Başı Toplam">
                 </div>
                 <div class="col-xs-6" style="padding: 0 5px;">
-                    <input type="number" pattern="[0-9]*" ng-model="all" placeholder="Sahaya Verilecek">
+                    <input type="number" pattern="[0-9]*" ng-model="all" ng-focus="focused=true" ng-blur="focused=false" placeholder="Sahaya Verilecek">
                 </div>
                 <div class="col-xs-12" style="padding: 0 5px;">
                     <button class="btn btn-success" ng-click="approve()">ONAYLA</button>
@@ -43,7 +43,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="total" style="position: fixed; bottom: 0; width: 100%; margin: 0; left: 0; padding: 10px 20px; z-index: 99;">
+            <div ng-hide="focused" class="total" style="position: fixed; bottom: 0; width: 100%; margin: 0; left: 0; padding: 10px 20px; z-index: 99;">
                 <h3 style="margin: 0;">TOPLAM: <span style="color: #42fd4a">{{total}} TL</span></h3>
             </div>
         </div>
