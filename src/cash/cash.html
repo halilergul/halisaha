@@ -55,7 +55,7 @@
             <span class="close" ng-click="close()">&times;</span>
             <h4>Tutar Giriniz</h4>
             <div class="amount-form">
-                <input type="number" pattern="[0-9]*" id="{{payUserId}}" class="amount-input" ng-model="payUser" focus-me="focusInput">
+                <input type="number" pattern="[0-9]*" id="{{payUserId}}" class="amount-input" ng-model="payUser" focus-me="focusInput" ng-focus="focused=true" ng-blur="focused=false">
                 <button class="btn btn-success" ng-click="userAmount(payUserId)" ng-disabled="payUser == ''">ALINDI</button>
             </div>
         </div>

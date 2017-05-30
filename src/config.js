@@ -15,6 +15,9 @@ app.config(['$routeProvider', function($routeProvider, $scope) {
         }).when('/join', {
             templateUrl: 'src/join/join.html',
             controller: 'JoinController'
+        }).when('/past', {
+            templateUrl: 'src/past/past.html',
+            controller: 'PastController'
         }).when('/cash', {
             templateUrl: 'src/cash/cash.html',
             controller: 'CashController'

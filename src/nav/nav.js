@@ -1,13 +1,13 @@
 app.controller('NavController', function($scope, $location, $http, $localStorage) {
     /* Set the width of the side navigation to 250px */
-    $scope.openNav = function() {    
+    $scope.openNav = function() {
         $scope.openClass = "open";
         //document.getElementById("mySidenav").style.width = "250px";
         $scope.overlay = true;
     }
 
     /* Set the width of the side navigation to 0 */
-    $scope.closeNav = function() { 
+    $scope.closeNav = function() {
         $scope.openClass = "";
         //document.getElementById("mySidenav").style.width = "0";
         $scope.overlay = false;
@@ -25,6 +25,13 @@ app.controller('NavController', function($scope, $location, $http, $localStorage
         $scope.openClass = "";
         //document.getElementById("mySidenav").style.width = "0";
         $location.path("/join");
+    }
+
+    $scope.Past = function() {
+        $scope.overlay = false;
+        $scope.openClass = "";
+        //document.getElementById("mySidenav").style.width = "0";
+        $location.path("/past");
     }
 
     $scope.Cash = function() {
